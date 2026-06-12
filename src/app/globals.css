@@ -1,0 +1,166 @@
+@import "tailwindcss";
+
+/*
+ * AASIM design system.
+ *
+ * Inspired by modern dark-mode agency sites: deep teal canvas, near-black
+ * inset cards, electric-lime / bone-white accents, and a single serif accent
+ * face for editorial headlines. Tokens live in :root so Tailwind v4's
+ * @theme inline directive can expose them as utility classes (bg-canvas,
+ * text-ink, font-display, etc.).
+ */
+
+:root {
+  /* Surfaces */
+  --color-canvas: #0e2522;          /* deep teal page background */
+  --color-canvas-2: #0a1c1a;        /* slightly darker for sections */
+  --color-surface: #0a0f0e;         /* near-black card background */
+  --color-surface-2: #111817;       /* hover / inset card */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Ink */
+  --color-ink: #f5f3ee;             /* primary text (warm bone) */
+  --color-ink-2: #c8c4ba;           /* secondary text */
+  --color-ink-3: #8a8a82;           /* tertiary text */
+  --color-ink-inverse: #0a0f0e;     /* text on light surfaces */
+
+  /* Accents */
+  --color-accent: #d9ff5b;          /* electric lime — primary CTA / focus */
+  --color-accent-2: #6ee7b7;        /* mint — secondary highlight */
+  --color-accent-3: #f4b860;        /* amber — tertiary/warning */
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Radii */
+  --radius-card: 28px;
+  --radius-pill: 999px;
+
+  color-scheme: dark;
+}
+
+/* Tailwind v4 — expose tokens as utility classes. */
+@theme inline {
+  --color-canvas: var(--color-canvas);
+  --color-canvas-2: var(--color-canvas-2);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-border: var(--color-border);
+  --color-border-strong: var(--color-border-strong);
+
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-ink-3: var(--color-ink-3);
+  --color-ink-inverse: var(--color-ink-inverse);
+
+  --color-accent: var(--color-accent);
+  --color-accent-2: var(--color-accent-2);
+  --color-accent-3: var(--color-accent-3);
+
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-serif: var(--font-serif);
+  --font-mono: var(--font-mono);
+
+  --radius-card: var(--radius-card);
+  --radius-pill: var(--radius-pill);
+}
+
+/* Page base ---------------------------------------------------------------- */
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-ink-inverse);
+}
+
+/* Inputs inherit the dark theme. */
+input,
+textarea,
+select,
+button {
+  font-family: inherit;
+}
+
+/* Decorative ambient noise — gives flat surfaces a tactile, filmic quality. */
+.bg-noise {
+  position: relative;
+  isolation: isolate;
+}
+.bg-noise::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Hide scrollbars on horizontal marquees. */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Marquee animation used on the trust-logo strip. */
+@keyframes aasim-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: aasim-marquee 40s linear infinite;
+}
+.animate-marquee-slow {
+  animation: aasim-marquee 60s linear infinite;
+}
+
+/* Custom reactive cursor (desktop only). */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor,
+  html.has-custom-cursor * {
+    cursor: none !important;
+  }
+}
+
+/* Focus ring (accessibility + brand-matched). */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Honour reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
