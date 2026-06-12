@@ -11,8 +11,20 @@ import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = React.useState(false);
-  const [open, setOpen] = React.useState(false);
+  const [mobileMenu, setMobileMenu] = React.useState<{ open: boolean; path: string }>({
+    open: false,
+    path: "",
+  });
   const pathname = usePathname();
+  const menuOpen = mobileMenu.open && mobileMenu.path === pathname;
+
+  const toggleMenu = () =>
+    setMobileMenu((m) =>
+      m.open && m.path === pathname
+        ? { open: false, path: pathname }
+        : { open: true, path: pathname }
+    );
+  const closeMenu = () => setMobileMenu({ open: false, path: pathname });
 
   React.useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -20,11 +32,6 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Auto-close mobile menu on route change.
-  React.useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   return (
     <header className="sticky top-0 z-40">
@@ -44,8 +51,7 @@ export function SiteHeader() {
           <nav className="hidden lg:flex items-center gap-1">
             {PRIMARY_NAV.map((item) => {
               const active =
-                pathname === item.href ||
-                (item.href !== "/" && pathname.startsWith(item.href));
+                pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
                 <Link
                   key={item.href}
@@ -74,18 +80,18 @@ export function SiteHeader() {
             </ButtonLink>
             <button
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              onClick={toggleMenu}
               aria-label="Toggle navigation"
               className="lg:hidden inline-flex items-center justify-center size-10 rounded-full border border-border text-ink hover:bg-white/5 transition"
             >
-              {open ? <X size={18} /> : <Menu size={18} />}
+              {menuOpen ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile menu sheet */}
-      {open ? (
+      {menuOpen ? (
         <div className="lg:hidden px-3 mt-2">
           <div className="mx-auto max-w-[1280px] rounded-3xl border border-border bg-surface/95 backdrop-blur-xl p-4">
             <nav className="flex flex-col">
@@ -93,6 +99,7 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={closeMenu}
                   className="px-3 py-3 rounded-xl text-base text-ink hover:bg-white/5"
                 >
                   {item.label}
@@ -103,6 +110,7 @@ export function SiteHeader() {
                 variant="primary"
                 size="md"
                 className="mt-3 w-full"
+                onClick={closeMenu}
               >
                 Let&apos;s work
               </ButtonLink>

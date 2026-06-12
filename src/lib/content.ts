@@ -12,7 +12,7 @@ import {
   Cpu,
   Database,
   Gauge,
-  Instagram,
+  Share2,
   Layers,
   LineChart,
   Megaphone,
@@ -466,7 +466,7 @@ export const CAPABILITIES: Capability[] = [
     title: "Performance marketing built-in",
     description:
       "Instagram, LinkedIn, and SEO loops launched with the product — not bolted on six months later.",
-    icon: Instagram,
+    icon: Share2,
   },
   {
     title: "Cross-platform",

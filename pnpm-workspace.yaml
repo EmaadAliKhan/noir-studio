@@ -1,7 +1,10 @@
+# pnpm 11+ project config (replaces package.json#pnpm).
+# See https://pnpm.io/settings#allowbuilds
+
+packages:
+  - .
+
 allowBuilds:
-  esbuild: set this to true or false
-  sharp: set this to true or false
-  unrs-resolver: set this to true or false
-ignoredBuiltDependencies:
-  - sharp
-  - unrs-resolver
+  esbuild: true
+  sharp: true
+  unrs-resolver: true

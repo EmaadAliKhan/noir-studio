@@ -7,7 +7,9 @@ import { SiteFooter } from "@/components/site/site-footer";
 import { ReactiveCursor } from "@/components/site/reactive-cursor";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aasim.studio"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://aasim.studio"
+  ),
   title: {
     default: `${BRAND.name} — ${BRAND.tagline}`,
     template: `%s · ${BRAND.name}`,
