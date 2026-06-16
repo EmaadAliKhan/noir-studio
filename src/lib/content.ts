@@ -24,17 +24,24 @@ import {
   Sparkles,
   Workflow,
 } from "lucide-react";
+import { FEATURES } from "@/lib/features";
 
 // ----------------------------- Navigation -----------------------------
 
-export const PRIMARY_NAV = [
+const PRIMARY_NAV_ALL = [
   { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "Case studies", href: "/case-studies" },
+  { label: "Projects", href: "/projects" },
   { label: "About us", href: "/about" },
   { label: "Blog", href: "/blog" },
   { label: "Contact us", href: "/contact" },
 ] as const;
+
+export const PRIMARY_NAV = PRIMARY_NAV_ALL.filter((item) => {
+  if (item.href === "/industries" && !FEATURES.industries) return false;
+  return true;
+});
 
 // ----------------------------- Services -----------------------------
 
@@ -52,7 +59,7 @@ export const SERVICES: Service[] = [
     slug: "web-development",
     title: "Web & product engineering",
     short:
-      "Fixed-price, production-grade web apps and marketing sites — built fast with senior architectural oversight.",
+      "Production-grade web apps and marketing sites — built fast with senior architectural oversight.",
     icon: Code2,
     bullets: [
       "Next.js + TypeScript front-ends",
@@ -167,7 +174,7 @@ export const INDUSTRIES: Industry[] = [
       "Limited budget, finite runway",
     ],
     outcomes: [
-      "Fixed-price MVP in 3 – 6 weeks",
+      "Scoped MVP in 3 – 6 weeks",
       "Production-grade architecture",
       "Built-in analytics + activation funnels",
     ],
@@ -376,7 +383,7 @@ export const STATS = [
   { value: "3 – 6 wks", label: "Average MVP timeline" },
   { value: "40%+", label: "Manual work removed for clients" },
   { value: "24×7", label: "Monitoring & on-call cover" },
-  { value: "100%", label: "Fixed-price, milestone billing" },
+  { value: "100%", label: "Milestone-based delivery" },
 ] as const;
 
 // ----------------------------- Logo strip -----------------------------
@@ -451,9 +458,9 @@ export const CAPABILITIES: Capability[] = [
     icon: Workflow,
   },
   {
-    title: "Fixed-price MVPs",
+    title: "Scoped MVPs",
     description:
-      "Scope, price, and timeline locked at PRD sign-off. No T&M surprises, no scope-creep arguments.",
+      "Scope and timeline locked at PRD sign-off. No scope-creep arguments.",
     icon: Layers,
   },
   {
@@ -487,7 +494,7 @@ export const CAPABILITIES: Capability[] = [
 export const FAQ = [
   {
     q: "How fast can you ship an MVP?",
-    a: "Most fixed-price MVPs ship in 3 – 6 weeks from PRD sign-off. Larger products take 8 – 12 weeks. We commit to a date and a price before we start.",
+    a: "Most MVPs ship in 3 – 6 weeks from PRD sign-off. Larger products take 8 – 12 weeks. We commit to a date before we start.",
   },
   {
     q: "Do you work with non-tech founders?",

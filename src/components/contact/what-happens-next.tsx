@@ -20,7 +20,7 @@ const STEPS = [
     icon: FileText,
     title: "Scope & proposal",
     description:
-      "You'll receive a fixed-price proposal with milestones, deliverables, and a realistic launch date before any code starts.",
+      "You'll receive a scoped proposal with milestones, deliverables, and a realistic launch date before any code starts.",
   },
 ] as const;
 

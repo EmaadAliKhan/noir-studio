@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ServicesHero } from "@/components/services/hero";
 import { TracksOverview } from "@/components/services/tracks-overview";
 import { ServiceDeepDives } from "@/components/services/service-deep-dives";
+import { FEATURES } from "@/lib/features";
 import { PricingCalculator } from "@/components/pricing-calculator";
 import { EngagementModels } from "@/components/services/engagement-models";
 import { ServicesFaq } from "@/components/services/faq";
@@ -17,8 +18,8 @@ export default function ServicesPage() {
       <ServicesHero />
       <TracksOverview />
       <ServiceDeepDives />
-      <PricingCalculator />
-      <EngagementModels />
+      {FEATURES.pricingCalculator ? <PricingCalculator /> : null}
+      {FEATURES.engagementModels ? <EngagementModels /> : null}
       <ServicesFaq />
       <ServicesCta />
     </>

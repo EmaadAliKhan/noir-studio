@@ -30,10 +30,10 @@ export const BLOG_POSTS: BlogPost[] = [
     publishedAt: "2026-05-22",
     author: "Lead Architect",
     tags: ["MVP", "Process", "AI", "Cursor"],
-    body: `Most agencies still bill on time and materials, which means every extra week is revenue. We bill fixed price, which means every extra week is loss. That single incentive flip rewires the whole process.
+    body: `Most agencies still bill on time and materials, which means every extra week is revenue. We scope upfront, which means every extra week is loss. That single incentive flip rewires the whole process.
 
 ## Discovery is a deliverable, not a sales call
-Before we write code, we ship a Product Requirements Document — objectives, user stories, scope, and an explicit "out of scope" list. The client signs off. Then the price and timeline are locked.
+Before we write code, we ship a Product Requirements Document — objectives, user stories, scope, and an explicit "out of scope" list. The client signs off. Then the scope and timeline are locked.
 
 ## AI agents are interns with photographic memory
 We run Cursor + Claude Code agents in parallel on isolated branches. They generate boring code at superhuman speed. A senior engineer reviews every PR. Speed × judgement = production quality.

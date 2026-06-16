@@ -1,6 +1,7 @@
-import { TrustLogos } from "@/components/ui/trust-logos";
 import { Container, Section } from "@/components/ui/section";
 import { Reveal } from "@/components/ui/reveal";
+import { FEATURES } from "@/lib/features";
+import { TrustLogos } from "@/components/ui/trust-logos";
 import { ContactFunnel } from "@/components/contact/contact-funnel";
 import { ContactInfoPanel } from "@/components/contact/contact-info-panel";
 import { WhatHappensNext } from "@/components/contact/what-happens-next";
@@ -25,9 +26,11 @@ export function ContactPage() {
             </Reveal>
           </div>
 
-          <div className="mt-16 md:mt-20">
-            <TrustLogos />
-          </div>
+          {FEATURES.trustLogos ? (
+            <div className="mt-16 md:mt-20">
+              <TrustLogos />
+            </div>
+          ) : null}
 
           <div className="mt-16 md:mt-20">
             <WhatHappensNext />

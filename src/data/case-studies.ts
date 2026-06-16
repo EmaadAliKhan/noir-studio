@@ -205,7 +205,7 @@ export const CASE_STUDIES: CaseStudy[] = [
   {
     slug: "verdant-saas-mvp",
     client: "Verdant",
-    title: "Fixed-price SaaS MVP for a climate-tech founder.",
+    title: "SaaS MVP for a climate-tech founder.",
     summary:
       "Built a multi-tenant SaaS for carbon accounting in 6 weeks — auth, billing, dashboards, and a public marketing site.",
     category: "Web App",

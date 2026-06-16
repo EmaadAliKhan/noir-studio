@@ -12,7 +12,7 @@ export function AboutStory() {
           <Reveal>
             <div className="space-y-6 text-ink-2 leading-relaxed text-base md:text-lg">
               <p>
-                AASIM started when four people with complementary skills got tired of watching
+                Noir Studio started when four people with complementary skills got tired of watching
                 founders juggle three vendors, two freelancers, and a marketing agency that
                 didn&apos;t understand the product.
               </p>
@@ -25,7 +25,7 @@ export function AboutStory() {
                 interfaces people actually adopt.
               </p>
               <p className="text-ink font-display text-xl md:text-2xl tracking-tight">
-                Together, we ship like a senior team — and price like a startup.
+                Together, we ship like a senior team — with startup speed.
               </p>
             </div>
           </Reveal>
@@ -38,17 +38,14 @@ export function AboutStory() {
               <h2 className="font-display text-3xl text-ink">One studio, full stack.</h2>
               <div className="mt-6 flex items-start gap-3 text-ink-2">
                 <MapPin className="size-5 text-accent shrink-0 mt-0.5" />
-                <div>
-                  <div>{BRAND.address}</div>
-                  <div className="mt-1 text-sm text-ink-3">{BRAND.city}</div>
-                </div>
+                <div>{BRAND.address}</div>
               </div>
               <div className="mt-8 grid grid-cols-2 gap-4">
                 {[
                   { label: "Team size", value: "4 founders" },
                   { label: "Focus", value: "Build · Run · Grow" },
                   { label: "Typical MVP", value: "3 – 6 weeks" },
-                  { label: "Model", value: "Fixed price" },
+                  { label: "Model", value: "End-to-end" },
                 ].map((item) => (
                   <div key={item.label} className="rounded-2xl bg-surface-2 border border-border p-4">
                     <div className="font-mono text-[10px] uppercase tracking-wider text-ink-3">

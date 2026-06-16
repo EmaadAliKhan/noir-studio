@@ -1,19 +1,30 @@
 "use client";
 
 import * as React from "react";
+import { FEATURES } from "@/lib/features";
 
-// ReactiveCursor — a custom soft-blur dot that follows the mouse, scales up
-// over interactive elements, and disappears on touch devices. Adds the
-// "alive" feel called out in the deep-research design notes.
 export function ReactiveCursor() {
+  const [active, setActive] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!FEATURES.customCursor) return;
+
+    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const enable = () => {
+      if (mq.matches) setActive(true);
+      else setActive(false);
+    };
+
+    enable();
+    mq.addEventListener("change", enable);
+    return () => mq.removeEventListener("change", enable);
+  }, []);
+
   const dotRef = React.useRef<HTMLDivElement>(null);
   const ringRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    // Bail on touch / coarse pointer devices.
-    if (typeof window === "undefined") return;
-    const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-    if (!mq.matches) return;
+    if (!active) return;
 
     document.documentElement.classList.add("has-custom-cursor");
 
@@ -34,7 +45,6 @@ export function ReactiveCursor() {
     };
 
     const loop = () => {
-      // Smoothly lerp the ring towards the mouse.
       ringX += (mouseX - ringX) * 0.18;
       ringY += (mouseY - ringY) * 0.18;
       ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
@@ -47,11 +57,7 @@ export function ReactiveCursor() {
       const interactive = target.closest(
         "a, button, [role='button'], input, textarea, select, [data-cursor='hover']"
       );
-      if (interactive) {
-        ring.classList.add("is-hover");
-      } else {
-        ring.classList.remove("is-hover");
-      }
+      ring.classList.toggle("is-hover", Boolean(interactive));
     };
 
     const onLeave = () => {
@@ -77,20 +83,22 @@ export function ReactiveCursor() {
       document.removeEventListener("mouseenter", onEnter);
       document.documentElement.classList.remove("has-custom-cursor");
     };
-  }, []);
+  }, [active]);
+
+  if (!active) return null;
 
   return (
     <>
       <div
         ref={dotRef}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-[9999] size-2 rounded-full bg-accent mix-blend-difference transition-opacity duration-200"
+        className="pointer-events-none fixed top-0 left-0 z-[9999] size-2 rounded-full bg-accent mix-blend-difference transition-opacity duration-200 opacity-0"
         style={{ willChange: "transform" }}
       />
       <div
         ref={ringRef}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-[9998] size-9 rounded-full border border-accent/70 mix-blend-difference transition-[width,height,opacity,border-color,background-color] duration-200 ease-out [&.is-hover]:size-14 [&.is-hover]:bg-accent/15 [&.is-hover]:border-accent"
+        className="pointer-events-none fixed top-0 left-0 z-[9998] size-9 rounded-full border border-accent/70 mix-blend-difference transition-[width,height,opacity,border-color,background-color] duration-200 ease-out opacity-0 [&.is-hover]:size-14 [&.is-hover]:bg-accent/15 [&.is-hover]:border-accent"
         style={{ willChange: "transform" }}
       />
     </>

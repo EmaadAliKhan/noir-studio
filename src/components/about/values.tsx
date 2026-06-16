@@ -16,8 +16,8 @@ const VALUES = [
   },
   {
     icon: Workflow,
-    title: "Fixed price by default",
-    description: "Scope locked at PRD sign-off. No T&M surprises.",
+    title: "Scope locked early",
+    description: "Requirements nailed down at PRD sign-off. No scope creep.",
   },
   {
     icon: Megaphone,

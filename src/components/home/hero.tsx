@@ -7,8 +7,9 @@ import { ButtonLink } from "@/components/ui/button";
 import { CardShell } from "@/components/ui/card-shell";
 import { Container } from "@/components/ui/section";
 import { Pill } from "@/components/ui/pill";
-import { TrustLogos } from "@/components/ui/trust-logos";
 import { HERO_PILLS } from "@/lib/content";
+import { FEATURES } from "@/lib/features";
+import { TrustLogos } from "@/components/ui/trust-logos";
 
 // Hero — the agency's first impression. A massive inset CardShell sitting
 // on the teal canvas, holding an editorial headline, subhead, capability
@@ -164,16 +165,17 @@ export function HomeHero() {
           </div>
         </CardShell>
 
-        {/* Trust logos strip beneath the hero card */}
-        <div className="mt-12 md:mt-16">
-          <div className="mb-5 flex items-center gap-3">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-3">
-              Trusted by teams shipping serious things
-            </span>
-            <div className="h-px flex-1 bg-border" />
+        {FEATURES.trustLogos ? (
+          <div className="mt-12 md:mt-16">
+            <div className="mb-5 flex items-center gap-3">
+              <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-3">
+                Trusted by teams shipping serious things
+              </span>
+              <div className="h-px flex-1 bg-border" />
+            </div>
+            <TrustLogos />
           </div>
-          <TrustLogos />
-        </div>
+        ) : null}
       </Container>
     </section>
   );

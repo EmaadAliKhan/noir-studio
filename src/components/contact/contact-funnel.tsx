@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CardShell } from "@/components/ui/card-shell";
+import { FEATURES } from "@/lib/features";
 import { cn } from "@/lib/utils";
 
 const TOTAL_STEPS = 5;
@@ -178,7 +179,7 @@ export function ContactFunnel() {
           email: form.email,
           company: form.company || undefined,
           phone: form.phone || undefined,
-          budgetRange: form.budget,
+          budgetRange: FEATURES.showPricing ? form.budget : undefined,
           timeline: form.timeline,
           serviceInterest: projectLabel,
           message: form.message || undefined,
@@ -340,7 +341,7 @@ export function ContactFunnel() {
                 exit="exit"
               >
                 <StepHeader
-                  title="Timeline & budget"
+                  title={FEATURES.showPricing ? "Timeline & budget" : "Timeline"}
                   description="Rough ranges are enough — we'll refine on a discovery call."
                 />
 
@@ -361,21 +362,23 @@ export function ContactFunnel() {
                   </SegmentedGroup>
                 </fieldset>
 
-                <fieldset className="mt-6">
-                  <legend className="text-[11px] font-mono uppercase tracking-[0.18em] text-ink-3 mb-3">
-                    Budget
-                  </legend>
-                  <SegmentedGroup>
-                    {BUDGETS.map((b) => (
-                      <SegmentedOption
-                        key={b.id}
-                        selected={form.budget === b.id}
-                        onClick={() => setForm((f) => ({ ...f, budget: b.id }))}
-                        label={b.label}
-                      />
-                    ))}
-                  </SegmentedGroup>
-                </fieldset>
+                {FEATURES.showPricing ? (
+                  <fieldset className="mt-6">
+                    <legend className="text-[11px] font-mono uppercase tracking-[0.18em] text-ink-3 mb-3">
+                      Budget
+                    </legend>
+                    <SegmentedGroup>
+                      {BUDGETS.map((b) => (
+                        <SegmentedOption
+                          key={b.id}
+                          selected={form.budget === b.id}
+                          onClick={() => setForm((f) => ({ ...f, budget: b.id }))}
+                          label={b.label}
+                        />
+                      ))}
+                    </SegmentedGroup>
+                  </fieldset>
+                ) : null}
 
                 <div className="mt-8 flex justify-end">
                   <Button
@@ -383,7 +386,9 @@ export function ContactFunnel() {
                     variant="primary"
                     size="md"
                     onClick={goNext}
-                    disabled={!form.timeline || !form.budget}
+                    disabled={
+                      !form.timeline || (FEATURES.showPricing && !form.budget)
+                    }
                   >
                     Continue
                   </Button>

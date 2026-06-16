@@ -60,7 +60,7 @@ export function Logo({
       aria-label={`${BRAND.name} — home`}
     >
       <AasimMark size={variant === "compact" ? 22 : 28} />
-      <span className="font-display text-[20px] md:text-[22px] font-medium tracking-tight text-ink lowercase">
+      <span className="font-display text-[18px] md:text-[20px] font-medium tracking-tight text-ink">
         {BRAND.wordmark}
       </span>
     </Link>

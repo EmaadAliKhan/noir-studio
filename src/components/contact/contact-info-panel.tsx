@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Calendar, Mail, MapPin, Phone } from "lucide-react";
+import { Calendar, Mail, MapPin, Phone, User } from "lucide-react";
 import { CardShell } from "@/components/ui/card-shell";
 import { Button } from "@/components/ui/button";
 import { BRAND } from "@/lib/brand";
@@ -18,6 +18,7 @@ export function ContactInfoPanel() {
       </div>
 
       <ul className="space-y-4">
+        <ContactRow icon={User} label="Contact" value={BRAND.contactPerson} />
         <ContactRow
           icon={Mail}
           label="Email"
@@ -30,11 +31,7 @@ export function ContactInfoPanel() {
           href={`tel:${BRAND.phone.replace(/\s/g, "")}`}
           value={BRAND.phone}
         />
-        <ContactRow
-          icon={MapPin}
-          label="Office"
-          value={`${BRAND.address}, ${BRAND.city}`}
-        />
+        <ContactRow icon={MapPin} label="Office" value={BRAND.address} />
       </ul>
 
       <div className="pt-2 border-t border-border">

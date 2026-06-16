@@ -224,7 +224,7 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
                 </h2>
                 <p className="mt-6 text-lg text-ink-2">
                   Tell us what you&apos;re building. We&apos;ll reply within one business
-                  day with a clear next step — scope, timeline, and fixed price.
+                  day with a clear next step — scope and timeline.
                 </p>
                 <ButtonLink
                   href="/contact"

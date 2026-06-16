@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import { SERVICES } from "@/lib/content";
+import { FEATURES } from "@/lib/features";
 import {
   SERVICE_ENGAGEMENTS,
   SERVICE_ICON_OVERRIDES,
@@ -56,7 +57,7 @@ export function ServiceDeepDives() {
                       </ul>
 
                       {engagement ? (
-                        <div className="mt-8 pt-8 border-t border-border grid grid-cols-3 gap-4">
+                        <div className="mt-8 pt-8 border-t border-border grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div>
                             <div className="font-mono text-[10px] uppercase tracking-wider text-ink-3">
                               Timeline
@@ -65,18 +66,20 @@ export function ServiceDeepDives() {
                           </div>
                           <div>
                             <div className="font-mono text-[10px] uppercase tracking-wider text-ink-3">
-                              From
-                            </div>
-                            <div className="mt-1 text-sm text-accent font-display text-lg">
-                              {engagement.priceFrom}
-                            </div>
-                          </div>
-                          <div className="col-span-3 md:col-span-1">
-                            <div className="font-mono text-[10px] uppercase tracking-wider text-ink-3">
                               Outcome
                             </div>
                             <div className="mt-1 text-sm text-ink-2">{service.outcome}</div>
                           </div>
+                          {FEATURES.showPricing ? (
+                            <div>
+                              <div className="font-mono text-[10px] uppercase tracking-wider text-ink-3">
+                                From
+                              </div>
+                              <div className="mt-1 text-sm text-accent font-display text-lg">
+                                {engagement.priceFrom}
+                              </div>
+                            </div>
+                          ) : null}
                         </div>
                       ) : null}
                     </CardShell>
