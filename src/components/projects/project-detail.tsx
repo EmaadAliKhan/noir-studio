@@ -2,7 +2,9 @@ import Link from "next/link";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { PROJECTS } from "@/data/projects";
+import { getShowcaseByProjectSlug } from "@/data/showcase";
 import { accentForProject, formatLiveUrl, getEcosystemLabel } from "@/components/projects/utils";
+import { BrowserFrame } from "@/components/showcase/browser-frame";
 import { ProjectCard } from "@/components/projects/project-card";
 import { ButtonLink } from "@/components/ui/button";
 import { CardShell, CardGlow } from "@/components/ui/card-shell";
@@ -18,6 +20,7 @@ type ProjectDetailProps = {
 export function ProjectDetail({ project }: ProjectDetailProps) {
   const accent = accentForProject(project);
   const ecosystem = getEcosystemLabel(project.ecosystem);
+  const showcase = getShowcaseByProjectSlug(project.slug);
   const related = PROJECTS.filter(
     (p) =>
       p.slug !== project.slug &&
@@ -86,6 +89,33 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           </Reveal>
         </Container>
       </Section>
+
+      {showcase ? (
+        <Section className="py-6 md:py-10">
+          <Container>
+            <Reveal>
+              <SectionLabel>Live site preview</SectionLabel>
+              <div className="mt-5">
+                <Link href={`/work/${showcase.slug}`} className="group block">
+                  <BrowserFrame
+                    src={showcase.screenshot}
+                    alt={`${showcase.name} website screenshot`}
+                    scrollable
+                    maxHeight={560}
+                  />
+                </Link>
+              </div>
+              <Link
+                href={`/work/${showcase.slug}`}
+                className="mt-4 inline-flex items-center gap-1.5 text-sm text-accent hover:brightness-110 transition"
+              >
+                Full screenshot & project story
+                <ArrowUpRight size={15} />
+              </Link>
+            </Reveal>
+          </Container>
+        </Section>
+      ) : null}
 
       <Section className="py-12 md:py-16">
         <Container>

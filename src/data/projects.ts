@@ -43,6 +43,7 @@ export const PROJECTS: Project[] = [
     name: "NCD International",
     region: "USA + India",
     type: "Portfolio website",
+    liveUrl: "aasimalikhan.github.io/Architecture-Design-Studio",
     purpose:
       "Architecture and design studio portfolio showcasing civic, cultural, and residential projects worldwide — with an interactive Three.js globe hero, GSAP animations, and smooth scrolling.",
     techStack: [

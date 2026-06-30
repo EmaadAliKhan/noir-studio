@@ -3,9 +3,8 @@ import Link from "next/link";
 import { BRAND } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
-// AasimMark — the small geometric logomark to the left of the wordmark.
-// Inspired by the reference image's stacked-rounded-square glyph.
-export function AasimMark({
+// KernelMark — stacked-layer logomark for Kernel Stack.
+export function KernelMark({
   className,
   size = 28,
 }: {
@@ -59,7 +58,7 @@ export function Logo({
       )}
       aria-label={`${BRAND.name} — home`}
     >
-      <AasimMark size={variant === "compact" ? 22 : 28} />
+      <KernelMark size={variant === "compact" ? 22 : 28} />
       <span className="font-display text-[18px] md:text-[20px] font-medium tracking-tight text-ink">
         {BRAND.wordmark}
       </span>

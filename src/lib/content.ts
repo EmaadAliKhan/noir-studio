@@ -32,6 +32,7 @@ const PRIMARY_NAV_ALL = [
   { label: "Services", href: "/services" },
   { label: "Industries", href: "/industries" },
   { label: "Case studies", href: "/case-studies" },
+  { label: "Work", href: "/work" },
   { label: "Projects", href: "/projects" },
   { label: "About us", href: "/about" },
   { label: "Blog", href: "/blog" },

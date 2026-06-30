@@ -12,7 +12,7 @@ export function AboutStory() {
           <Reveal>
             <div className="space-y-6 text-ink-2 leading-relaxed text-base md:text-lg">
               <p>
-                Noir Studio started when four people with complementary skills got tired of watching
+                {BRAND.name} started when four people with complementary skills got tired of watching
                 founders juggle three vendors, two freelancers, and a marketing agency that
                 didn&apos;t understand the product.
               </p>
@@ -35,7 +35,7 @@ export function AboutStory() {
               <div className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent mb-4">
                 Founded in Hyderabad · 2025
               </div>
-              <h2 className="font-display text-3xl text-ink">One studio, full stack.</h2>
+              <h2 className="font-display text-3xl text-ink">One team, full stack.</h2>
               <div className="mt-6 flex items-start gap-3 text-ink-2">
                 <MapPin className="size-5 text-accent shrink-0 mt-0.5" />
                 <div>{BRAND.address}</div>
