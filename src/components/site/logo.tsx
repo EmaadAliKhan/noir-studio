@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BRAND } from "@/lib/brand";
 import { cn } from "@/lib/utils";
 
-// KernelMark — stacked-layer logomark for Kernel Stack.
+// KernelMark — stacked-layer logomark for KernelStack Labs.
 export function KernelMark({
   className,
   size = 28,

@@ -36,7 +36,7 @@ export function AboutHero() {
                 </h1>
 
                 <p className="mt-6 md:mt-8 text-base md:text-lg text-ink-2 leading-relaxed max-w-xl">
-                  We&apos;re a four-person studio in {BRAND.city} pairing 15+
+                  We&apos;re a four-person lab in {BRAND.city} pairing 15+
                   years of senior corporate IT leadership with a deliberately
                   AI-first build process. The result: a senior&#8209;corporate
                   brain inside a fast-builder body — one matrix of skills that

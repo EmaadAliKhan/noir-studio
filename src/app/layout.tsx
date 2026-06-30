@@ -8,7 +8,7 @@ import { ReactiveCursor } from "@/components/site/reactive-cursor";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://kernelstack.io"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://kernelstacklabs.io"
   ),
   title: {
     default: `${BRAND.name} — ${BRAND.tagline}`,

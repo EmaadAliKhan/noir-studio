@@ -38,7 +38,7 @@ export function SiteFooter() {
             </Link>
           </div>
           <div className="absolute -bottom-12 -right-6 opacity-[0.04] pointer-events-none select-none font-display text-[14rem] md:text-[22rem] leading-none tracking-tighter">
-            kernel
+            labs
           </div>
         </div>
 
