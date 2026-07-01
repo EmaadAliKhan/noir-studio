@@ -80,16 +80,16 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          <div className="col-span-1 md:col-span-2">
+          <div className="col-span-1 md:col-span-2 min-w-0">
             <div className="font-mono text-[11px] uppercase tracking-[0.22em] text-ink-3 mb-4">
               Contact
             </div>
             <ul className="space-y-3 text-sm">
               <li className="text-ink font-medium">{BRAND.contactPerson}</li>
-              <li>
+              <li className="min-w-0">
                 <a
                   href={`mailto:${BRAND.email}`}
-                  className="text-ink-2 hover:text-ink transition"
+                  className="text-xs text-ink-2 hover:text-ink transition break-all leading-snug"
                 >
                   {BRAND.email}
                 </a>
